@@ -1,7 +1,21 @@
-import logo from "./logo.svg";
 import "./App.css";
-import React, { Component, useState } from "react";
+import styled from "styled-components";
+import React, { Component } from "react";
 import Person from "./Person/Person";
+
+const StyledButton = styled.button`
+  background-color: ${(props) => (props.alt ? "red" : "green")};
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => (props.alt ? "salmon" : "lightgreen")};
+    color: black;
+  }
+`;
 
 class App extends Component {
   state = {
@@ -47,11 +61,16 @@ class App extends Component {
 
   render() {
     const style = {
-      backgoundColor: "white",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
       cursor: "pointer",
+      ":hover": {
+        backgroundColor: "lightgreen",
+        color: "black",
+      },
     };
 
     let persons = null;
@@ -72,17 +91,35 @@ class App extends Component {
           })}
         </div>
       );
+      // style.backgroundColor = "red";
+      // style[":hover"] = {
+      //   backgroundColor: "salmon",
+      //   color: "black",
+      // };
+    }
+
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("red"); //classes = ['red']
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold"); //classes = ['red', 'bold' ]
     }
 
     return (
-      <div className="App">
-        <h1>Hello</h1>
-        <p> this is really working here</p>
-        <button style={style} onClick={this.togglePersonsHandler}>
-          Toggle Persons
-        </button>
-        {persons}
-      </div>
+      <styleRoot>
+        <div className="App">
+          <h1>Hello</h1>
+          <p className={classes.join(" ")}> This is really working here</p>
+          <StyledButton
+            alt={this.state.showPersons}
+            onClick={this.togglePersonsHandler}
+          >
+            Toggle Persons
+          </StyledButton>
+          {persons}
+        </div>
+      </styleRoot>
     );
   }
   // return React.createElement(
