@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Person.css";
 import styled from "styled-components";
 
@@ -13,27 +13,32 @@ const StyledDiv = styled.div`
     width: 450px;
   }
 `;
-
-const person = (props) => {
-  const style = {
-    "@media(min-width: 500px)": {
-      width: "450px",
-    },
-  };
-
-  return (
-    console.log("[Person.js] rendering.."),
-    (
-      // <div className="Person" style={style}>
-      <StyledDiv>
-        <p onClick={props.click}>
-          I'm a {props.name} and I am {props.age} years old.
-        </p>
-        <p>{props.children}</p>
-        <input type="text" onChange={props.changed} value={props.name} />
-      </StyledDiv>
-    )
-  );
+const style = {
+  "@media(min-width: 500px)": {
+    width: "450px",
+  },
 };
 
-export default person;
+class Person extends Component {
+  render() {
+    return (
+      console.log("[Person.js] rendering.."),
+      (
+        // <div className="Person" style={style}>
+        <StyledDiv>
+          <p onClick={this.props.click}>
+            I'm a {this.props.name} and I am {this.props.age} years old.
+          </p>
+          <p>{this.props.children}</p>
+          <input
+            type="text"
+            onChange={this.props.changed}
+            value={this.props.name}
+          />
+        </StyledDiv>
+      )
+    );
+  }
+}
+
+export default Person;
