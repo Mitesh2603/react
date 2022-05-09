@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
@@ -8,19 +8,35 @@ const StyledButton = styled.button`
   border: 1px solid blue;
   padding: 8px;
   cursor: pointer;
-
   &:hover {
     background-color: ${(props) => (props.alter ? "salmon" : "lightgreen")};
     color: black;
   }
 `;
 
-const cockpit = (props) => {
+const Cockpit = (props) => {
+  useEffect(() => {
+    console.log("[Cockpit.js] useEffect");
+    setTimeout(() => {
+      alert("Saved data to cloud");
+    }, 1000);
+    return () => {
+      console.log("[Cockpit.js] cleanup work in useEffect");
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log("[Cockpit.js] 2nd useEffect");
+    return () => {
+      console.log("[Cockpit.js] cleanup work in 2nd useEffect");
+    };
+  });
+
   const classes = [];
-  if (props.persons.length <= 2) {
+  if (props.personsLength <= 2) {
     classes.push("red"); //classes = ['red']
   }
-  if (props.persons.length <= 1) {
+  if (props.personsLength <= 1) {
     classes.push("bold"); //classes = ['red', 'bold' ]
   }
 
@@ -35,4 +51,4 @@ const cockpit = (props) => {
   );
 };
 
-export default cockpit;
+export default React.memo(Cockpit);
