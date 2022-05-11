@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Person.css";
+import Aux from "../../../hoc/Auxiliary";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
@@ -21,10 +22,10 @@ const style = {
 
 class Person extends Component {
   render() {
+    console.log("[Person.js] rendering..");
     return (
-      console.log("[Person.js] rendering.."),
-      (
-        // <div className="Person" style={style}>
+      <Aux>
+
         <StyledDiv>
           <p onClick={this.props.click}>
             I'm a {this.props.name} and I am {this.props.age} years old.
@@ -36,7 +37,7 @@ class Person extends Component {
             value={this.props.name}
           />
         </StyledDiv>
-      )
+      </Aux>
     );
   }
 }

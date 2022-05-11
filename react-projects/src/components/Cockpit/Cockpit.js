@@ -51,4 +51,4 @@ const Cockpit = (props) => {
   );
 };
 
-export default React.memo(Cockpit);
+export default Cockpit;

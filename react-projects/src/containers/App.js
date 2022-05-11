@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 
+// import WithClass from "../hoc/WithClass";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,7 @@ class App extends Component {
     otherState: "Some other value",
     showPersons: false,
     showCockpit: true,
+    changeCounter: 0,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -56,7 +59,12 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({ persons: persons });
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1,
+      };
+    });
   };
 
   deletePersonHandler = (personIndex) => {
@@ -99,13 +107,13 @@ class App extends Component {
       );
     }
 
-    const classes = [];
-    if (this.state.persons.length <= 2) {
-      classes.push("red"); //classes = ['red']
-    }
-    if (this.state.persons.length <= 1) {
-      classes.push("bold"); //classes = ['red', 'bold' ]
-    }
+    // const classes = [];
+    // if (this.state.persons.length <= 2) {
+    //   classes.push("red"); //classes = ['red']
+    // }
+    // if (this.state.persons.length <= 1) {
+    //   classes.push("bold"); //classes = ['red', 'bold' ]
+    // }
 
     return (
       <div className="App">
