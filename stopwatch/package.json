@@ -1,19 +1,14 @@
 {
-  "name": "react-projects",
+  "name": "stopwatch",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
-    "prop-types": "^15.8.1",
-=======
->>>>>>> f388481c36d4e0907c5ec6e7b96f85d6d7a13142
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
-    "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
