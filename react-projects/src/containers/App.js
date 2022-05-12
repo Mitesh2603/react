@@ -2,6 +2,7 @@ import "./App.css";
 import React, { Component } from "react";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
+
 // import WithClass from "../hoc/WithClass";
 
 class App extends Component {
